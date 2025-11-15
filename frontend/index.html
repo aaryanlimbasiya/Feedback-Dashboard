@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Feedback Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  :root {
+    --orange: #ff7b29;
+    --orange-dark: #ff6a00;
+    --bg: #fff7f0;
+    --card: #ffffff;
+    --text: #2d2d2d;
+    --muted: #777;
+    --radius: 14px;
+    --shadow: 0 4px 14px rgba(0,0,0,0.06);
+  }
+
+  body {
+    margin: 0;
+    font-family: Inter, sans-serif;
+    background: var(--bg);
+    padding: 32px;
+    color: var(--text);
+  }
+
+  .container {
+    max-width: 1150px;
+    margin: auto;
+  }
+
+  /* HEADER */
+  .header {
+    margin-bottom: 28px;
+  }
+
+  .header h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--orange-dark);
+  }
+
+  .header p {
+    margin: 6px 0 0;
+    color: var(--muted);
+  }
+
+  /* CARDS */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 30px;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--orange-dark);
+  }
+
+  .card-title {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .card-value {
+    font-size: 28px;
+    margin-top: 6px;
+    font-weight: 700;
+    color: var(--orange-dark);
+  }
+
+  /* MAIN CONTENT (Two columns) */
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
+  }
+
+  /* TABLE PANEL */
+  .panel {
+    background: var(--card);
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .panel h2 {
+    margin: 0 0 14px 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead {
+    background: #ffe8d6;
+  }
+
+  th {
+    text-align: left;
+    padding: 12px;
+    font-weight: 600;
+    color: #555;
+  }
+
+  td {
+    padding: 12px;
+    border-bottom: 1px solid #f3d7c0;
+  }
+
+  tr:hover {
+    background: #fff1e6;
+  }
+
+  /* Rating badges */
+  .rating {
+    padding: 6px 10px;
+    border-radius: 999px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  .r-5 { background: #28c76f; }
+  .r-4 { background: #74e681; }
+  .r-3 { background: #f4c430; }
+  .r-2 { background: #ff922b; }
+  .r-1 { background: #ff4d4d; }
+
+  /* RIGHT SIDE CARDS */
+  .side-box {
+    background: var(--card);
+    padding: 18px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+  }
+
+  .progress {
+    background: #ffe0c4;
+    height: 10px;
+    width: 100%;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+
+  .progress-fill {
+    background: var(--orange-dark);
+    height: 100%;
+    width: 74%;
+  }
+
+  @media (max-width: 900px) {
+    .cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Feedback Dashboard</h1>
+    <p>Overview of insights, ratings, and user responses</p>
+  </div>
+
+  <!-- CARDS ROW -->
+  <div class="cards">
+    <div class="card">
+      <div class="card-title">Total Feedbacks</div>
+      <div class="card-value">1243</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Average Rating</div>
+      <div class="card-value">4.2</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Positive (4+)</div>
+      <div class="card-value">856</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Negative (below 3)</div>
+      <div class="card-value">97</div>
+    </div>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div class="layout">
+
+    <!-- LEFT SIDE TABLE -->
+    <div class="panel">
+      <h2>Recent Feedback</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Rating</th>
+            <th>Message</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Asha Kapoor</td>
+            <td><span class="rating r-5">5</span></td>
+            <td>Great support — quick reply.</td>
+            <td>12 Nov 2025</td>
+          </tr>
+
+          <tr>
+            <td>Rahul Mehta</td>
+            <td><span class="rating r-4">4</span></td>
+            <td>Good experience overall.</td>
+            <td>11 Nov 2025</td>
+          </tr>
+
+          <tr>
+            <td>Priya Shah</td>
+            <td><span class="rating r-2">2</span></td>
+            <td>App crashed two times.</td>
+            <td>09 Nov 2025</td>
+          </tr>
+
+          <tr>
+            <td>Ankit Singh</td>
+            <td><span class="rating r-3">3</span></td>
+            <td>Average experience.</td>
+            <td>07 Nov 2025</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RIGHT SIDE STATS -->
+    <div>
+
+      <div class="side-box">
+        <h3 style="margin:0;">Satisfaction Score</h3>
+        <p class="muted" style="margin:6px 0;">Last 30 days</p>
+        <div class="progress">
+          <div class="progress-fill"></div>
+        </div>
+        <p style="margin-top:8px; font-weight:700; color:var(--orange-dark);">74%</p>
+      </div>
+
+      <div class="side-box">
+        <h3 style="margin:0;">Top Issues</h3>
+        <ul style="padding-left:18px; color:var(--muted); margin-top:10px;">
+          <li>Submission errors</li>
+          <li>Confusing UI labels</li>
+          <li>Slow mobile load</li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <h3 style="margin:0;">Quick Actions</h3>
+        <button style="margin-top:10px; padding:10px 14px; width:100%; background:var(--orange-dark); border:0; color:white; border-radius:10px; font-weight:600; cursor:pointer;">
+          Contact Support
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
